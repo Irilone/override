@@ -1,97 +1,96 @@
 <style>
-/* Swedish Healthcare Brand Overrides */
+/* Swedish Healthcare Brand Theme - Merged CSS */
+
 :root {
-    /* Override Bootstrap defaults */
-    --bs-primary: #1F7EA4;
-    --bs-primary-rgb: 31, 126, 164;
-    --bs-secondary: #4AA6C9;
-    --bs-body-color: #003366;
-    --bs-heading-color: #012363;
-    --bs-body-font-family: 'Filson Pro', var(--bs-font-sans-serif);
-    
-    /* Custom additions */
-    --bs-border-color: #e1e7f0;
-    --bs-table-striped-bg: #eef5ff;
+  /* Bootstrap overrides */
+  --bs-primary: #1F7EA4;
+  --bs-primary-rgb: 31, 126, 164;
+  --bs-secondary: #4AA6C9;
+  --bs-body-color: #003366;
+  --bs-heading-color: #012363;
+  --bs-body-font-family: 'Filson Pro', system-ui, -apple-system, sans-serif;
+  --bs-border-color: #e1e7f0;
+  --bs-table-striped-bg: #eef5ff;
 }
 
-/* Typography Adjustments */
+/* Global Typography */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--bs-heading-color);
+}
+
+/* Vaccination Info */
 .vaccination-info {
-    max-width: 45rem; /* ~720px */
+  max-width: 45rem;
 }
-
 .vaccination-info h2 {
-    color: var(--bs-heading-color);
-    font-weight: 600;
+  color: var(--bs-heading-color);
+  font-weight: 600;
 }
 
-/* Location Schedule - Preserve custom styling */
+/* Location Schedule */
 .location-schedule {
-    max-width: 28rem; /* ~450px */
-    font-size: 0.9375rem;
+  max-width: 28rem;
+  font-size: 0.9375rem;
 }
-
 .location-schedule thead {
-    background: linear-gradient(90deg, #cfe4ff 0%, #e1e7ff 100%);
+  background: linear-gradient(90deg, #cfe4ff 0%, #e1e7ff 100%);
 }
-
 .location-schedule th {
-    border-bottom: 1.5px solid var(--bs-heading-color);
-    font-weight: 600;
+  border-bottom: 1.5px solid var(--bs-heading-color);
+  font-weight: 600;
 }
 
-/* Price Toggle System - Preserve the magic */
-.price-table .price-col.pen,
-.price-table .price-col.stu,
-.price-table .price-val.pen,
-.price-table .price-val.stu {
-    display: none;
+/* Price Table Display Toggle */
+.price-table .price-col:not(.ord),
+.price-table .price-val:not(.ord) {
+  display: none;
 }
 
 #v-pen:checked ~ * .price-col.pen,
 #v-pen:checked ~ * .price-val.pen {
-    display: table-cell;
+  display: table-cell !important;
+}
+#v-pen:checked ~ * .price-col:not(.pen),
+#v-pen:checked ~ * .price-val:not(.pen) {
+  display: none !important;
 }
 
-#v-pen:checked ~ * .price-col.ord,
-#v-pen:checked ~ * .price-val.ord,
-#v-pen:checked ~ * .price-col.stu,
-#v-pen:checked ~ * .price-val.stu {
-    display: none;
+/* Future: Similar logic for #v-stu */
+
+/* Price toggle button checked state */
+.price-toggle .btn-check:checked + .btn-outline-primary {
+  --bs-btn-bg: var(--bs-heading-color);
+  --bs-btn-border-color: var(--bs-heading-color);
 }
 
-/* Similar patterns for #v-stu:checked */
-
-/* Accessibility Enhancements */
+/* Focus visible accessibility */
 .btn-check:focus-visible + .btn {
-    box-shadow: 0 0 0 0.25rem rgba(31, 126, 164, 0.25);
+  box-shadow: 0 0 0 0.25rem rgba(31, 126, 164, 0.25);
 }
 
-/* Swedish WCAG Compliance */
+/* Touch target compliance */
 .table th,
 .accordion-button {
-    min-height: 44px; /* Touch target compliance */
+  min-height: 44px;
 }
 
-/* Mobile-First Swedish Healthcare UX */
+/* Responsive Adjustments */
 @media (max-width: 767.98px) {
-    .vaccination-info {
-        padding-inline: 1rem;
-    }
-    
-    .location-schedule {
-        font-size: 0.875rem;
-    }
-    
-    .price-toggle .btn {
-        font-size: 0.8125rem;
-        padding: 0.375rem 0.75rem;
-    }
+  .vaccination-info {
+    padding-inline: 1rem;
+  }
+  .location-schedule {
+    font-size: 0.875rem;
+  }
+  .price-toggle .btn {
+    font-size: 0.8125rem;
+    padding: 0.375rem 0.75rem;
+  }
 }
 
-/* Tablet and up */
 @media (min-width: 768px) {
-    .vaccination-info h2 {
-        font-size: 2rem;
-    }
+  .vaccination-info h2 {
+    font-size: 2rem;
+  }
 }
 </style>
